@@ -37,6 +37,4 @@ public class ControlAcheterProduit {
 		return controlVerifierIdentite.verifierIdentite(nomAcheteur);
 	}
 
-
-	//TODO a completer
 }
