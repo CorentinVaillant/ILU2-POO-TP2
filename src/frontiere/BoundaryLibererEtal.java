@@ -10,14 +10,22 @@ public class BoundaryLibererEtal {
 	}
 
 	public void libererEtal(String nomVendeur) {
-		if (!this.controlLibererEtal.isVendeur(nomVendeur)){
+		boolean vendeurReconnu = controlLibererEtal.isVendeur(nomVendeur);
+		if (!vendeurReconnu){
 			System.out
-				.println("Mais vous êtes déjà inscrit sur notre marché aujourd'hui !");
+				.println("Mais vous n'êtes pas inscrit sur notre marché aujourd'hui !");
 		}else{
-			String[] donneEtal = this.controlLibererEtal.libererEtal(nomVendeur);
-			if(donneEtal !=null){
-				//? https://moodle.univ-tlse3.fr/pluginfile.php/671301/mod_resource/content/3/TP2-6-LibérerEtal.pdf
-				//TP2-6
+			String[] donneEtal = controlLibererEtal.libererEtal(nomVendeur);
+			String etalOccupe = donneEtal[0];
+			if (etalOccupe.equals("true")){
+				String produit = donneEtal[2];
+				String quantiteInitial = donneEtal[3];
+				String quantiteVendu = donneEtal[4];
+				System.out.println(new StringBuilder()
+					.append("Vous avez vendu ").append(quantiteVendu).append(" sur ").append(quantiteInitial).append(" ").append(produit).append(".\n")
+					.append("En revoir ").append(nomVendeur).append(", passez une bonne journée.")
+				);
+
 			}
 		}
 	}
